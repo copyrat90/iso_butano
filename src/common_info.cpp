@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020-2021 Gustavo Valiente gustavo.valiente@protonmail.com
+ * Copyright (c) 2020-2022 Gustavo Valiente gustavo.valiente@protonmail.com
  * zlib License, see LICENSE file.
  */
 
@@ -7,6 +7,7 @@
 
 #include "bn_keypad.h"
 #include "bn_display.h"
+#include "bn_string_view.h"
 #include "bn_sprite_text_generator.h"
 
 namespace common

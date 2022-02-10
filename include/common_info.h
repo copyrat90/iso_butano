@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020-2021 Gustavo Valiente gustavo.valiente@protonmail.com
+ * Copyright (c) 2020-2022 Gustavo Valiente gustavo.valiente@protonmail.com
  * zlib License, see LICENSE file.
  */
 
@@ -9,10 +9,10 @@
 #include "bn_vector.h"
 #include "bn_span_fwd.h"
 #include "bn_sprite_ptr.h"
+#include "bn_string_view.h"
 
 namespace bn
 {
-    class string_view;
     class sprite_text_generator;
 }
 

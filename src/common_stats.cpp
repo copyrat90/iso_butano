@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2020-2021 Gustavo Valiente gustavo.valiente@protonmail.com
+ * Copyright (c) 2020-2022 Gustavo Valiente gustavo.valiente@protonmail.com
  * zlib License, see LICENSE file.
  */
 
 #include "common_stats.h"
 
 #include "bn_core.h"
+#include "bn_memory.h"
 #include "bn_string.h"
 #include "bn_display.h"
 #include "bn_sprite_text_generator.h"
