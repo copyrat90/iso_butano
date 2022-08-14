@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2020-2022 Gustavo Valiente gustavo.valiente@protonmail.com
+ * zlib License, see LICENSE file.
+ */
+
+/*
+ * `iso_bn::variable_wait_sprite_animate_action` is an ALTERED version of `bn::sprite_animate_actions`,
+ * which adds variable `wait_updates`.
+ */
+
 #ifndef ISO_BN_VARIABLE_WAIT_SPRITE_ANIMATE_ACTION_H
 #define ISO_BN_VARIABLE_WAIT_SPRITE_ANIMATE_ACTION_H
 

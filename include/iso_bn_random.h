@@ -3,6 +3,11 @@
  * zlib License, see LICENSE file.
  */
 
+/*
+ * `iso_bn::random` is an ALTERED version of `bn::random`,
+ * which adds getters & setters for the internal seeds.
+ */
+
 #ifndef ISO_BN_RANDOM_H
 #define ISO_BN_RANDOM_H
 

@@ -10,7 +10,7 @@ This is a wrapper that adds variable `wait_updates` to the `bn::sprite_animate_a
 
 ### 2. `iso_bn::random` class
 
-This adds getters & setters to the internal seed in `bn::random`.
+This adds getters & setters for the internal seeds in `bn::random`.
 
 ## License
 
