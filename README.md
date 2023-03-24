@@ -12,6 +12,10 @@ This is a wrapper that adds variable `wait_updates` to the `bn::sprite_animate_a
 
 This adds getters & setters for the internal seeds in `bn::random`.
 
+### 3. `iso_bn::sprite_palette_swap_toggle_action` class
+
+This is a palette swap toggle action, inspired by `bn::sprite_palette_inverted_toggle_action`.
+
 ## License
 
 Source code's license is same as [Butano Engine](https://github.com/GValiente/butano), as this is a *derivative work* for the Butano.

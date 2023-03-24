@@ -9,9 +9,12 @@
 #include "bn_string_view.h"
 
 #include "bn_vector.h"
+#include "iso_bn_sprite_palette_swap_action.h"
 #include "iso_bn_variable_wait_sprite_animate_action.h"
 
+#include "bn_sprite_items_cavegirl.h"
 #include "bn_sprite_items_ninja.h"
+#include "bn_sprite_palette_items_cavegirl_alt.h"
 
 #include "common_info.h"
 #include "common_variable_8x16_sprite_font.h"
@@ -157,6 +160,30 @@ void animation_forever_scene(bn::sprite_text_generator& text_generator)
     }
 }
 
+void palette_swap_action_scene(bn::sprite_text_generator& text_generator)
+{
+    constexpr bn::string_view info_text_lines[] = {
+        "START: go to next scene",
+    };
+
+    common::info info("Palette swap action", info_text_lines, text_generator);
+
+    bn::sprite_ptr cavegirl_sprite = bn::sprite_items::cavegirl.create_sprite(0, 0);
+    const bn::sprite_palette_item& palette_item = bn::sprite_items::cavegirl.palette_item();
+    const bn::sprite_palette_item& alt_palette_item = bn::sprite_palette_items::cavegirl_alt;
+    bn::sprite_palette_ptr cavegirl_palette = cavegirl_sprite.palette();
+
+    iso_bn::sprite_palette_swap_toggle_action action(cavegirl_palette, palette_item, alt_palette_item, 60);
+
+    while (!bn::keypad::start_pressed())
+    {
+        action.update();
+
+        info.update();
+        bn::core::update();
+    }
+}
+
 } // namespace
 
 int main()
@@ -172,6 +199,9 @@ int main()
         bn::core::update();
 
         animation_forever_scene(text_generator);
+        bn::core::update();
+
+        palette_swap_action_scene(text_generator);
         bn::core::update();
     }
 }
