@@ -34,6 +34,7 @@ private:
     struct _managed_palette_swap
     {
         bn::sprite_palette_ptr ptr;
+        bool swapped;
         bn::sprite_palette_item original_item;
         bn::sprite_palette_item swapped_item;
     };
@@ -44,7 +45,7 @@ public:
      */
     [[nodiscard]] static bool get(const _managed_palette_swap& palette_swap)
     {
-        return palette_swap.ptr.colors() == palette_swap.swapped_item.colors_ref();
+        return palette_swap.swapped;
     }
 
     /**
@@ -53,6 +54,7 @@ public:
     static void set(bool swapped, _managed_palette_swap& palette_swap)
     {
         palette_swap.ptr.set_colors(swapped ? palette_swap.swapped_item : palette_swap.original_item);
+        palette_swap.swapped = swapped;
     }
 };
 
@@ -73,14 +75,17 @@ public:
     /**
      * @brief Constructor.
      * @param palette sprite_palette_ptr to copy.
-     * @param orig original palette item.
-     * @param swapped swapped palette item.
+     * @param original_palette_item original palette item.
+     * @param swapped_palette_item swapped palette item.
      * @param duration_updates How much times the action has to be updated to toggle
      * if the colors of the given sprite_palette_ptr must be inverted or not.
      */
-    sprite_palette_swap_toggle_action(const bn::sprite_palette_ptr& palette, const bn::sprite_palette_item& orig,
-                                      const bn::sprite_palette_item& swapped, int duration_updates)
-        : bool_toggle_value_template_action(sprite_palette_swap_manager::_managed_palette_swap{palette, orig, swapped},
+    sprite_palette_swap_toggle_action(const bn::sprite_palette_ptr& palette,
+                                      const bn::sprite_palette_item& original_palette_item,
+                                      const bn::sprite_palette_item& swapped_palette_item, int duration_updates)
+        : bool_toggle_value_template_action(sprite_palette_swap_manager::_managed_palette_swap{palette, false,
+                                                                                               original_palette_item,
+                                                                                               swapped_palette_item},
                                             duration_updates)
     {
     }
@@ -88,15 +93,18 @@ public:
     /**
      * @brief Constructor.
      * @param palette sprite_palette_ptr to move.
-     * @param orig original palette item.
-     * @param swapped swapped palette item.
+     * @param original_palette_item original palette item.
+     * @param swapped_palette_item swapped palette item.
      * @param duration_updates How much times the action has to be updated to toggle
      * if the colors of the given sprite_palette_ptr must be inverted or not.
      */
-    sprite_palette_swap_toggle_action(bn::sprite_palette_ptr&& palette, const bn::sprite_palette_item& orig,
-                                      const bn::sprite_palette_item& swapped, int duration_updates)
-        : bool_toggle_value_template_action(
-              sprite_palette_swap_manager::_managed_palette_swap{bn::move(palette), orig, swapped}, duration_updates)
+    sprite_palette_swap_toggle_action(bn::sprite_palette_ptr&& palette,
+                                      const bn::sprite_palette_item& original_palette_item,
+                                      const bn::sprite_palette_item& swapped_palette_item, int duration_updates)
+        : bool_toggle_value_template_action(sprite_palette_swap_manager::_managed_palette_swap{bn::move(palette), false,
+                                                                                               original_palette_item,
+                                                                                               swapped_palette_item},
+                                            duration_updates)
     {
     }
 
