@@ -1,11 +1,10 @@
 /*
  * Copyright (c) 2020-2022 Gustavo Valiente gustavo.valiente@protonmail.com
  * zlib License, see LICENSE file.
- */
-
-/*
- * `iso_bn::random` is an ALTERED version of `bn::random`,
- * which adds getters & setters for the internal seeds.
+ *
+ * 2023-03-24: Modified by copyrat90
+ *   + `iso_bn::random` is an ALTERED version of `bn::random`,
+ *     which adds getters & setters for the internal seeds.
  */
 
 #ifndef ISO_BN_RANDOM_H
